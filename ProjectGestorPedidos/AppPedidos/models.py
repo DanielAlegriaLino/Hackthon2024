@@ -16,8 +16,6 @@ class Form_User(models.Model):
     phone_number = models.CharField(null=False, max_length=10)
     email = models.EmailField(null=True)
     interest_areas = models.CharField(null=False , max_length=50)
-    date_start = models.DateTimeField(null=False)
-    date_end = models.DateTimeField(null=False)
     txtfile = models.FileField(upload_to='text_files/', null=False, blank=True)
     text_conversation = models.TextField(null=True, blank=True)
     txtjson = models.JSONField(null=True, blank=True)
