@@ -9,7 +9,7 @@ from .models import Product
 
 import json
 import numpy as np
-import hnswlib
+# import hnswlib
 from collections import defaultdict
 from openai import OpenAI
 from dotenv import load_dotenv
@@ -17,7 +17,7 @@ import random
 import string
 import json
 import numpy as np
-import hnswlib
+# import hnswlib
 from collections import defaultdict
 from django.views.decorators.csrf import csrf_exempt
 
@@ -39,7 +39,7 @@ def metricas(request):
     return render(request, 'metricas.html')
 
 def lading(request):
-    return render(request, 'lading.html')
+    return render(request, 'landing.html')
 
 def formulario_registro(request):
     if request.method == 'POST':
@@ -60,7 +60,7 @@ def formulario_registro(request):
         
     else:
         form = FormularioRegistro()
-    return render(request, 'register_form.html', {'form': form})
+    return render(request, 'registro.html', {'form': form})
 
 @csrf_exempt
 def get_best_n_products(request):
