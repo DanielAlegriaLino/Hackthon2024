@@ -24,5 +24,11 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name="home"),
-    path('registro/', views.formulario_registro, name="formulario_registro")
-]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    path('registro/', views.formulario_registro, name="formulario_registro"),
+    path('get_best_n_products', views.get_best_n_products, name="get_n_most_related"),
+    path('registro/', views.formulario_registro, name="registro"),
+    path('clientes/', views.clientes, name="clientes"),
+    path('mensajes/', views.mensajes, name="mensajes"),
+    path('metricas/', views.metricas, name="metricas"),
+    path('landing/', views.lading, name="landing"),
+    ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
