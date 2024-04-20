@@ -6,7 +6,19 @@ from .utils import zip_tostr
 # Create your views here.
 
 def home(request):
-    return render(request, 'home.html')
+    return render(request, 'inicio.html')
+
+def clientes(request):
+    return render(request, 'clientes.html')
+
+def mensajes(request):
+    return render(request, 'mensajes.html')
+
+def metricas(request):
+    return render(request, 'metricas.html')
+
+def lading(request):
+    return render(request, 'lading.html')
 
 def formulario_registro(request):
     if request.method == 'POST':
@@ -27,6 +39,6 @@ def formulario_registro(request):
         
     else:
         form = FormularioRegistro()
-    return render(request, 'register_form.html', {'form': form})
+    return render(request, 'registro.html', {'form': form})
     
 
