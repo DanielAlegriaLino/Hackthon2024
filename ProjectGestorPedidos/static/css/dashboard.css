@@ -1,8 +1,17 @@
 /* --- --- BARRA LATERAL --- --- */
+.main-container {
+	display: flex;
+	flex-direction: row;
+}
+
+.container-child {
+	width: 70% !important;
+}
+
 .barra-lateral {
 	background: #FFFFFF;
 	color: var(--titulos);
-	min-width: 300px;
+	width: 30% !important;
 	min-height: 100vh;
     border-right: solid 1px var(--verde_oscuro);
     position: relative;
