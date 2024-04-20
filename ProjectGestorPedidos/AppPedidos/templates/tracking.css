@@ -1,3 +1,11 @@
+.background-image {
+    background-image: url('https://prezigram-assets.prezicdn.net/04d46a08c0ea577f2302062062cfe3a395089ed163e6971a5e2f1473671b9eba979bb47e0934f857de70c4cb23ec1a5e328d19a57e583e69cc837332394f7c03');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+}
+
 .panel {
     background-color: white;
 }
