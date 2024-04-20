@@ -31,13 +31,29 @@
                             <form method="post" enctype="multipart/form-data">
                                 {% csrf_token %}
                                     
+                                <div class="form-floating mb-3">
                                 {{ form.name }}
+                                <label for="name">Nombre</label>
+                                </div>
+                                <div class="form-floating mb-3">
                                 {{ form.company }}
+                                <label for="company">Compañia</label>
+                                </div>
+                                <div class="form-floating mb-3">
                                 {{ form.phone_number}}
+                                <label for="phone_number">Número de Teléfono</label>
+                                </div>
+                                <div class="form-floating mb-3">
                                 {{ form.email }}
+                                <label for="email">Correo Electrónico</label>
+                                </div>
+                                <div class="form-floating mb-3">
                                 {{ form.interest_areas }}
-                                {{ form.chat_file }}
-
+                                <label for="interest_areas">Área de Interés</label>
+                                </div>
+                                <div class="text-center mt-4">
+                                    {{ form.chat_file }}
+                                </div>
                                 <div class="text-center mt-4">
                                     <button type="submit" class="btn btn-primary">Añadir Cliente</button>
                                 </div>
