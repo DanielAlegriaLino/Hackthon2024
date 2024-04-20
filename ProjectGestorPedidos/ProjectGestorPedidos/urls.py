@@ -26,6 +26,7 @@ urlpatterns = [
     path('', views.home, name="home"),
     path('registro/', views.formulario_registro, name="formulario_registro"),
     path('get_best_n_products', views.get_best_n_products, name="get_n_most_related"),
+    path('get_user_score', views.get_user_score, name="get_user_score"),
     path('registro/', views.formulario_registro, name="registro"),
     path('clientes/', views.clientes, name="clientes"),
     path('mensajes/', views.mensajes, name="mensajes"),

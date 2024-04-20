@@ -1,5 +1,10 @@
 import zipfile
 import os
+from openai import OpenAI
+from dotenv import load_dotenv
+
+load_dotenv() 
+client = OpenAI()
 
 def zip_tostr(archivo_zip):
     contenido_txt = None
@@ -18,3 +23,10 @@ def zip_tostr(archivo_zip):
     
     return contenido_txt
     
+def get_embedding(text_to_embed):
+	response = client.embeddings.create(
+    	model="text-embedding-3-small",
+    	input=[text_to_embed]
+	)
+	embedding = response.data[0].embedding
+	return embedding

@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Client
 from .forms import FormularioRegistro
-from .utils import zip_tostr
+from .utils import zip_tostr,get_embedding
 from django.http import HttpResponse
 from django.http import JsonResponse
 
@@ -25,6 +25,16 @@ from django.views.decorators.csrf import csrf_exempt
 
 load_dotenv() 
 client = OpenAI()
+
+score_frases = [
+    "tengo que pensarlo, quizas en otro momento",
+    "he escuchado de ustedes y me gustaria obtener algo de informacion", 
+    "Me interesa comprar su porducto en este momento", 
+    ]
+score_embbeddings = []
+for frase in score_frases:
+    score_embbeddings.append(get_embedding(frase))
+
 
 def home(request):
     return render(request, 'inicio.html')
@@ -96,24 +106,46 @@ def search(db, embeddings, search):
     p.set_ef(50) # ef should always be > k
     new_embedding = get_embedding(search)
     # Fetch k neighbors
-    labels, distances = p.knn_query(new_embedding, k=10)
+    if(len(db)>10):
+        labels, distances = p.knn_query(new_embedding, k=10)
+    else:
+        labels, distances = p.knn_query(new_embedding, k=len(db))
+        
     all_urls = []
     for item in db:
         all_urls.append(item)
     
     res = {}
-    for i in range(5):
+    for i in range(len(db)):
         res[i]= all_urls [ int(labels[0][i]) ]
         res[i].update({"distance": str(distances[0][i]) })
         
+    
     return res
 
-def get_embedding(text_to_embed):
-	response = client.embeddings.create(
-    	model="text-embedding-3-small",
-    	input=[text_to_embed]
-	)
-	embedding = response.data[0].embedding
-	return embedding
+
+@csrf_exempt
+def get_user_score(request):
+    data = json.loads(request.body)
+    try:
+        data = json.loads(request.body)
+    except json.JSONDecodeError:
+        return JsonResponse({'error': 'Invalid JSON in request body'}, status=400)
+
+    search_query = data.get('query')
+    
+    productos = Product.objects.all()
+    c_db = []
+    c_embeddings = score_embbeddings
+    for frase in score_frases:
+        c_db.append({
+            "frase":frase,
+        })
+    
+    res = search(db=c_db,embeddings=c_embeddings,search=search_query)    
+    best_profile = res[0]["frase"]
+    return JsonResponse({"score":score_frases.index(best_profile)+1})
+        
+    return JsonResponse(res)
     
 
