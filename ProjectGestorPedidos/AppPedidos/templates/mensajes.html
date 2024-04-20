@@ -12,16 +12,17 @@
 	<div class="row">
 		<div class="container pt-1">
 			<div class="row">
+				<h3>Popularidad</h3>
 				<div class="col-12">
-					<table class="table text-center">
+					<table class="table text-center" id="tabla-productos">
 						<thead>
 							<tr>
-								<th scope="col">Usuario</th>
-								<th scope="col">Sugerencias</th>
-								<th scope="col">Tiempo</th>
-								<th scope="col">Acción</th>
+								<th scope="col">Producto</th>
+								<th scope="col">Descripcion</th>
+								<th scope="col">Popularidad</th>
 							</tr>
 						</thead>
+					
 					</table>
 				</div>
 			</div>
@@ -35,4 +36,5 @@
 		integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
 		crossorigin="anonymous"></script>
 	<script src="https://kit.fontawesome.com/b1a230810a.js" crossorigin="anonymous"></script>
+	<script src="{% static 'scripts/productos.js' %}"></script>
 {% endblock %}
