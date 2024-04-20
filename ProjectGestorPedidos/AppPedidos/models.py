@@ -29,4 +29,12 @@ class Form_User(models.Model):
     def __str__(self):
         return f"From {self.formatted_start_time()} to {self.formatted_end_time()}"
 
-    
+
+class Product(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.TextField()
+    embedding =  models.JSONField(null=True, blank=True)
+
+
+    def __str__(self):
+        return self.name
