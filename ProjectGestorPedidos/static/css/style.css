@@ -1,0 +1,77 @@
+:root {
+    --verde_claro: #42CD67;
+    --verde_oscuro: #103928;
+    --titulos: #42CC67;
+}
+
+/* --- --- BARRA LATERAL --- --- */
+.barra-lateral {
+	background: #FFFFFF;
+	color: var(--titulos);
+	min-width: 300px;
+	min-height: 100vh;
+    border-right: solid 1px var(--verde_oscuro);
+    position: relative;
+}
+
+.barra-lateral a {
+	color: var(--titulos);
+}
+
+/* --- LOGO --- */
+.barra-lateral .logo {
+	background: var(--verde_oscuro);
+}
+
+.barra-lateral .logo h2 {
+	font-size: 30px;
+	font-family: 'Roboto', sans-serif;
+	text-align: center;
+	font-weight: 300;
+}
+
+/* --- MENU --- */
+.barra-lateral .menu a {
+	display: block;
+	padding: 20px;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 500;
+	border-bottom: 1px solid rgba(255,255,255, .1);
+    text-decoration: none;
+    color: var(--verde_oscuro);
+}
+
+.barra-lateral .menu a:hover {
+	background: var(--titulos);
+}
+
+.barra-lateral .menu a svg {
+	margin-right: 10px;
+}
+
+.barra-lateral .menu .boton-salir {
+	position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+/* --- --- MAIN --- --- */
+.main {
+	padding-top: 40px;
+}
+
+.main .columna {
+	padding:0 40px;
+}
+
+.main .titulo {
+	color: #262a34;
+	font-size: 25px;
+	font-weight: 500;
+	font-family: 'Roboto', sans-serif;
+	margin-bottom: 20px;
+}
+
+.main .widget {
+	margin-bottom: 40px;
+}
