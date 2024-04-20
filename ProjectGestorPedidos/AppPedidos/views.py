@@ -17,7 +17,7 @@ import random
 import string
 import json
 import numpy as np
-# import hnswlib
+import hnswlib
 from collections import defaultdict
 from django.views.decorators.csrf import csrf_exempt
 
