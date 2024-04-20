@@ -1,6 +1,13 @@
 import uuid
 from django.db import models
 
+from openai import OpenAI
+from dotenv import load_dotenv
+import json
+
+load_dotenv() 
+client = OpenAI()
+
 class Client(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, unique=True)
     name = models.CharField(null=False, max_length=50)
@@ -35,7 +42,19 @@ class Product(models.Model):
     description = models.TextField()
     embedding =  models.JSONField(null=True, blank=True)
 
-
     def __str__(self):
         return self.name
     
+
+def get_embedding(description):
+    response = client.embeddings.create(model="text-embedding-3-small",input=[description])
+    embedding = response.data[0].embedding
+    return embedding
+
+def update_embeddings():
+    products = Product.objects.all()
+    for product in products:
+        description = product.description
+        embedding = get_embedding(description)
+        product.embedding = embedding
+        product.save()
