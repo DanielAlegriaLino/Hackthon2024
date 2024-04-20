@@ -26,11 +26,18 @@ from django.views.decorators.csrf import csrf_exempt
 load_dotenv() 
 client = OpenAI()
 
-score_frases = [
-    "tengo que pensarlo, quizas en otro momento",
-    "he escuchado de ustedes y me gustaria obtener algo de informacion", 
-    "Me interesa comprar su porducto en este momento", 
-    ]
+score_frases =[
+    "¡No me interesa en absoluto tu producto! Lo encuentro inútil y sobrevalorado.",
+    "Ya he probado algo similar en el pasado y fue una completa pérdida de dinero. No vuelvo a caer en eso.",
+    "Lo siento, pero tengo serias dudas sobre la calidad y el valor de lo que estás vendiendo. No creo que valga la pena.",
+    "No tengo tiempo ni energía para dedicar a algo que parece tan poco prometedor. Gracias, pero no gracias.",
+    "Realmente no veo cómo tu producto podría mejorar mi vida de alguna manera. No me convence en absoluto.",
+    "He escuchado algunas críticas negativas sobre tu producto y no estoy dispuesto a arriesgar mi dinero en algo así.",
+    "Hmm, quizás debería reconsiderarlo. He estado investigando un poco más y parece que tu producto tiene algunas características interesantes.",
+    "Después de pensarlo mejor, creo que tu producto podría resolver algunos de los problemas que estoy enfrentando. Estoy empezando a interesarme.",
+    "Me gusta lo que veo. Creo que tu producto podría ser justo lo que necesito para mejorar mi situación actual.",
+    "¡Estoy totalmente convencido! ¿Dónde puedo comprar tu producto? Estoy listo para hacerlo ahora mismo."
+]
 score_embbeddings = []
 for frase in score_frases:
     score_embbeddings.append(get_embedding(frase))
@@ -106,17 +113,14 @@ def search(db, embeddings, search):
     p.set_ef(50) # ef should always be > k
     new_embedding = get_embedding(search)
     # Fetch k neighbors
-    if(len(db)>10):
-        labels, distances = p.knn_query(new_embedding, k=10)
-    else:
-        labels, distances = p.knn_query(new_embedding, k=len(db))
+    labels, distances = p.knn_query(new_embedding, k=min( len(db) , 5))
         
     all_urls = []
     for item in db:
         all_urls.append(item)
     
     res = {}
-    for i in range(len(db)):
+    for i in range(min( len(db) , 5)):
         res[i]= all_urls [ int(labels[0][i]) ]
         res[i].update({"distance": str(distances[0][i]) })
         
