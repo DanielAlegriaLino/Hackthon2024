@@ -66,6 +66,12 @@ async function obtenerScore() {
         nuevaCelda.textContent = cliente.name;
 
         nuevaCelda = nuevaFila.insertCell(-1);
+        nuevaCelda.textContent = cliente.email;
+
+        nuevaCelda = nuevaFila.insertCell(-1);
+        nuevaCelda.textContent = cliente.shopping;
+
+        nuevaCelda = nuevaFila.insertCell(-1);
         nuevaCelda.textContent = cliente.score;
 
         // document.getElementById('correo').textContent = cliente.email;
