@@ -21,16 +21,11 @@ fetch('http://127.0.0.1:8000/get_best_n_products', {
             producto.popularity = Math.trunc((1 - (producto.distance / popularidadTotal)) * 100) + '%';
 
             insertarNuevaFila(producto);
-        })        
+        })
+
+        graficar();
     })
     .catch(err => console.log(err))
-
-
-function softmax(arr) {
-    return arr.map(function (value, index) {
-        return Math.exp(value) / arr.map(function (y /*value*/) { return Math.exp(y) }).reduce(function (a, b) { return a + b })
-    })
-}
 
 function insertarNuevaFila(productoObj) {
     let tablaProducto = document.getElementById('tabla-productos');
@@ -44,4 +39,27 @@ function insertarNuevaFila(productoObj) {
 function insertarCelda(nuevaFila, producto) {
     let nuevaCelda = nuevaFila.insertCell(-1);
     nuevaCelda.textContent = producto;
+}
+
+function graficar() {
+    const xValues = ["Alambre recocido", "Arena a granel", "Cemento gris", "Pala cuadrada", "Carretilla 4.5 Ft3"];
+    const yValues = [81, 80, 79, 79, 78, 75];
+
+    new Chart("myChart", {
+        type: "bar",
+        data: {
+            labels: xValues,
+            datasets: [{
+                backgroundColor: "green",
+                data: yValues
+            }]
+        },
+        options: {
+            legend: {display: false},
+            title: {
+              display: true,
+              text: "Productos"
+            }
+        }
+    });
 }
