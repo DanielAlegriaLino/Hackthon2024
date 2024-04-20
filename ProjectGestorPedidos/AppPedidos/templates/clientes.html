@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+<link rel="stylesheet" href="{% static 'css/tracking.css' %}">
+<title>Clientes</title>
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+
+    <div class="container pt-1">
+        <div class="row mb-3">
+            <a href="{%url 'registro'%}" class="btn boton">Añadir Cliente</a>
+        </div>
+    </div>
+
+
+    <div class="container pt-1">
+        <div class="row">
+            <div class="col-12">
+                <table class="table text-center">
+                    <thead>
+                        <tr>
+                            <th scope="col">Cliente</th>
+                            <th scope="col">Accion</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/b1a230810a.js" crossorigin="anonymous"></script>
+{% endblock %}
