@@ -13,6 +13,7 @@ RUN apt-get update && \
         python3-wheel \
         python3-venv \
         python3-pip \
+        libpq-dev \
         gcc \
         curl 
 
@@ -22,7 +23,6 @@ COPY . /app
 RUN python3 -m venv .venv
 
 
-RUN /app/.venv/bin/pip install -r requirements.txt
 
 RUN /app/.venv/bin/pip install hnswlib
 
@@ -30,6 +30,6 @@ RUN apt clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 
-# ENV OPENAI_API_KEY=''
+ENV OPENAI_API_KEY=""
 EXPOSE 8000
 
