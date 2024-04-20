@@ -4,7 +4,7 @@ from .models import Form_User
 class FormularioRegistro(forms.ModelForm):
     class Meta:
         model = Form_User
-        fields = ['name', 'company', 'phone_number', 'email', 'interest_areas', 'chat_file']
+        fields = ['name', 'company', 'phone_number', 'email', 'interest_areas']
         
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nombre'}),
@@ -12,6 +12,5 @@ class FormularioRegistro(forms.ModelForm):
             'phone_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Número de teléfono'}),
             'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'alguien@example.com'}),
             'interest_areas': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Área de Interés'}),
-            'chat_file': forms.FileInput(attrs={'class': 'form-control'}),
         }
         
