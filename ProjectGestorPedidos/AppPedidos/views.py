@@ -60,7 +60,6 @@ def formulario_registro(request):
         
     else:
         form = FormularioRegistro()
-<<<<<<< HEAD
     return render(request, 'register_form.html', {'form': form})
 
 @csrf_exempt
@@ -116,8 +115,5 @@ def get_embedding(text_to_embed):
 	)
 	embedding = response.data[0].embedding
 	return embedding
-=======
-    return render(request, 'registro.html', {'form': form})
->>>>>>> 1f6257d958248a72003dd84ebcae292e666f9b5c
     
 

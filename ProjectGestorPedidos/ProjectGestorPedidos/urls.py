@@ -24,11 +24,8 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name="home"),
-<<<<<<< HEAD
     path('registro/', views.formulario_registro, name="formulario_registro"),
     path('get_best_n_products', views.get_best_n_products, name="get_n_most_related"),
-=======
->>>>>>> 1f6257d958248a72003dd84ebcae292e666f9b5c
     path('registro/', views.formulario_registro, name="registro"),
     path('clientes/', views.clientes, name="clientes"),
     path('mensajes/', views.mensajes, name="mensajes"),
